@@ -123,10 +123,7 @@ mob/new_player/proc/StatRand()
 			slot_index++
 			if(istype(J,/datum/job/escalation))
 				var/datum/job/escalation/A = J
-				if(!check_player_in_whitelist(src.key, A.title) && !(A.title in protected_from_whitelist/*see escalation_whitelist.dm*/))
-					out += "<P>[A.name] - [A.english_name] (NOT IN WHITELIST)</P>"
-				else
-					out += "<P><a href='byond://?src=\ref[src];set_team_job=[slot_index]'>[A.name] - [A.english_name] (OPEN)</A></P>"
+				out += "<P><a href='byond://?src=\ref[src];set_team_job=[slot_index]'>[A.name] - [A.english_name] (OPEN)</A></P>"
 
 			else
 				if(!ismob(J))
@@ -160,10 +157,7 @@ mob/new_player/proc/StatRand()
 
 			if(istype(S, /datum/job/escalation))
 				var/datum/job/escalation/A = S
-				if(!check_player_in_whitelist(src.key, A.title)  && !(A.title in protected_from_whitelist/*see escalation_whitelist.dm*/))
-					out += "<p>[A.name] - [A.english_name] (NOT IN WHITELIST)</p>"
-				else
-					out += "<p><a href='byond://?src=\ref[src];set_fireteam_job=[slot_index]'>[A.name] - [A.english_name] (OPEN)</a></p>"
+				out += "<P><a href='byond://?src=\ref[src];set_team_job=[slot_index]'>[A.name] - [A.english_name] (OPEN)</A></P>"
 
 			else
 				if(!ismob(S))
@@ -501,7 +495,7 @@ mob/new_player/proc/StatRand()
 	else if(!href_list["late_join"])
 		new_player_panel()
 
-/*	if(href_list["SelectedJob"])
+	if(href_list["SelectedJob"])
 		var/datum/job/job = job_master.GetJob(href_list["SelectedJob"])
 
 		if(!job)
@@ -626,7 +620,7 @@ mob/new_player/proc/StatRand()
 				for(var/optionid = id_min; optionid <= id_max; optionid++)
 					if(!isnull(href_list["option_[optionid]"]))	//Test if this optionid was selected
 						vote_on_poll(pollid, optionid, 1)
-*/
+
 /mob/new_player/proc/IsJobAvailable(var/datum/job/job)
 	if(!job)	return 0
 	if(!job.is_position_available()) return 0
